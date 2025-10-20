@@ -1,4 +1,4 @@
-# ⚡ k KC-Ping CyberProject  
+# ⚡ Hello I'm Tchemako Nganou ken-Andrew Mael and this are my CyberProject 
 > *From learning to mastery — documenting my full cybersecurity journey.*
 >
 > <a href="https://www.linkedin.com/in/ken-andrew-mael-tchemako-nganou-89b48123a?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3Bt0dCUB1ORT61O%2FGlWI1imA%3D%3D"><img src="https://img.shields.io/badge/-LinkedIn-blue?style=flat-square&logo=Linkedin&logoColor=white&link=YOUR_LINKEDIN_URL" /></a>
