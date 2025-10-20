@@ -66,17 +66,6 @@ It’s designed to evolve with time, reflecting my **continuous improvement** an
 | 🧠 AI Ethics & Psychology | Human bias detection, explainability | SHAP, LIME |
 | 📓 Reproducible Research | Jupyter workflows, Git versioning | JupyterLab, GitHub |
 
----
-
-## 💼 Consulting & Soft Skills
-
-| **Area** | **Competencies Developed** |
-|:--|:--|
-| 🗣️ Communication | Writing technical reports, client explanation, documentation |
-| 🧩 Problem Solving | Structured debugging, analytical thinking, threat modeling |
-| 👥 Leadership | Mentorship, project ownership, presentation design |
-| 💡 Entrepreneurship | Product mindset, value creation, cybersecurity service design |
-| 🎯 Focus & Productivity | Deep work, knowledge management (Notion, GitHub) |
 
 ---
 
