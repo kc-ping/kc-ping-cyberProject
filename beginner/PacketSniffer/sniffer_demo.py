@@ -5,9 +5,10 @@ import textwrap
 def main():
     conn = socket.socket(socket.AF_PACKET, socket.SOCK_RAW, socket.ntohs(3)) # create a raw socket to capture all packets, sock_raw requires admin privileges, af_packet is used to capture link layer packets
     while True:
-       raw_data, addr= conn.recvfrom(65536) # receive packets
+       raw_data, addr= conn.recvfrom(65536) # receive packetss
        dest_mac, src_mac, eth_proto, data = ethernet_frame(raw_data) # unpack ethernet frame
        print('\nEthernet Frame:')
+       
        print('Destination MAC:', dest_mac)
        print('Source MAC:', src_mac)
        print('Ethernet Protocol:', eth_proto)
