@@ -1,0 +1,28 @@
+#analyzing one packet in my network
+Ethernet II
+Ethernet II, Src: PCSSystemtec_1f:b7:23 (08:00:27:1f:b7:23), Dst: 52:55:0a:00:02:02 (52:55:0a:00:02:02)
+
+src,52:55:0a:00:02:02 (52:55:0a:00:02:02)Source MAC:PCSSystemtec_1f:b7:23 (08:00:27:1f:b7:23)
+Destination MAC: 52:55:0a:00:02:02 (52:55:0a:00:02:02)
+Type: IP
+
+2. IP Header
+Internet Protocol Version 4, Src: 10.0.2.15, Dst: 192.168.1.254
+Source IP: 10.0.2.15
+Destination IP:192.168.1.254
+TTL: 64
+Identification: 2
+IP length:70
+
+3. TCP/UDP Header
+User Datagram Protocol, Src Port: 36829, Dst Port: 53
+Source Port: 36839
+Destination Port:53
+Sequence numbers:0
+Flags (ACK)
+
+4. Application Layer
+DNS Query : [Response In: 4]
+HTTP GET Request
+TLS handshake: None # for tcp packet but the packey choose is UDP
+
