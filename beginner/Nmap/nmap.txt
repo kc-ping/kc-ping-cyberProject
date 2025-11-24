@@ -1,0 +1,36 @@
+nmap -sn 192.168.56.102/24 #discovering which hosts in your virtual subnet are online.
+    Starting Nmap 7.95 ( https://nmap.org ) at 2025-11-24 03:20 EST
+    Nmap scan report for 192.168.56.1
+    Host is up (0.0014s latency).
+    MAC Address: 0A:00:27:00:00:0E (Unknown)
+    Nmap scan report for 192.168.56.100
+    Host is up (0.00019s latency).
+    MAC Address: 08:00:27:C6:3F:D3 (PCS Systemtechnik/Oracle VirtualBox virtual NIC)
+    Nmap scan report for 192.168.56.102 # target machine
+    Host is up (0.0014s latency).
+    MAC Address: 08:00:27:AD:62:23 (PCS Systemtechnik/Oracle VirtualBox virtual NIC)
+    Nmap scan report for 192.168.56.101
+    Host is up.
+    Nmap done: 256 IP addresses (4 hosts up) scanned in 24.65 seconds
+
+nmap -v 192.168.56.102   # scan target ports
+    Starting Nmap 7.95 ( https://nmap.org ) at 2025-11-24 03:33 EST
+    Initiating ARP Ping Scan at 03:33
+    Scanning 192.168.56.102 [1 port]
+    Completed ARP Ping Scan at 03:33, 0.07s elapsed (1 total hosts)
+    Initiating Parallel DNS resolution of 1 host. at 03:33
+    Completed Parallel DNS resolution of 1 host. at 03:33, 11.17s elapsed
+    Initiating SYN Stealth Scan at 03:33
+    Scanning 192.168.56.102 [1000 ports]
+    Completed SYN Stealth Scan at 03:33, 0.54s elapsed (1000 total ports)
+    Nmap scan report for 192.168.56.102
+    Host is up (0.00089s latency).
+    All 1000 scanned ports on 192.168.56.102 are in ignored states.
+    Not shown: 1000 closed tcp ports (reset)
+    MAC Address: 08:00:27:AD:62:23 (PCS Systemtechnik/Oracle VirtualBox virtual NIC)
+
+    Read data files from: /usr/share/nmap
+    Nmap done: 1 IP address (1 host up) scanned in 11.89 seconds
+            Raw packets sent: 1001 (44.028KB) | Rcvd: 1001 (40.028KB)            
+
+                                                                                            
