@@ -1,0 +1,11 @@
+Below are some common commands summarizing the above:
+
+nmap -sn 192.168.56.0/24 – Ping sweep (list live hosts).
+
+nmap -sT 192.168.56.103 – TCP connect scan (all defaults).
+
+nmap -sV -p 1-1000 192.168.56.103 – Service/version detection on ports 1–1000.
+
+nmap -O 192.168.56.103 – OS fingerprinting (guess operating system).
+
+nmap -p- -T4 -A -oA fullscan 192.168.56.103 – Scan all TCP ports with aggressive options (OS, version, scripts).
