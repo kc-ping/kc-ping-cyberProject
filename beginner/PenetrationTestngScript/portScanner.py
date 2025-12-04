@@ -51,3 +51,15 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
+'''
+OPTIONAL ENHANCEMENTS:
+- Multi-threading: The current script scans ports sequentially, which can be slow over large ranges. 
+You can speed it up by using Python’s threading (or concurrent.futures) to scan multiple ports in parallel. For example, one thread per port significantly reduces total scan time, as noted in examples of Python port scanners
+geeksforgeeks.org
+medium.com
+
+- Save/Output Formats: The code already saves results to CSV. You could also output to JSON, a database, or integrate with reporting tools. Saving to a file or structured format makes it easier to document your findings or share results.
+
+'''
