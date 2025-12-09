@@ -9,6 +9,8 @@ class PasswordStrengthTester:
     def __init__(self, password):
         self.password = password
         self.score = 0
+        self.entropyBits = 0
+        self.rating= None
 
     def calculateStrength(self):
         self.score = 0
@@ -58,8 +60,9 @@ class PasswordStrengthTester:
             entropy = len(pwd) * math.log2(charsetSize) if charsetSize > 0 else 0
             return entropy
         
-        entropy_bits = calculateEntropy(pwd)
-        print(f'Estimated Entropy: {entropy_bits:.2f} bits')
+        entropyBits = calculateEntropy(pwd)
+        self.entropyBits = entropyBits
+        print(f'Estimated Entropy: {entropyBits:.2f} bits')
         ## real-world cracks often find patterns, so entropy is theoretical.
         
         rating = ""
@@ -74,7 +77,30 @@ class PasswordStrengthTester:
         else:
             rating = Fore.GREEN + Style.BRIGHT + "Very Strong"
 
+        # store rating (colored and plain)
+        plainRating = re.sub(r'\x1b\[[0-9;]*m', '', rating)
+        self.rating_colored = rating
+        self.rating = plainRating
+
+
         # Build ASCII bar (one '#' per point, '-' for missing, total length = 6)
         bar = '[' + '#' * self.score + '-' * (6 - self.score) + ']'
 
         print(f"Strength: {bar}  {rating}{Style.RESET_ALL}  (Score: {self.score}/6)")
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="Password Strength Checker CLI") # Argument parser
+    parser.add_argument("password", help="Password to check strength for") # Required password argument
+    parser.add_argument('--json', action='store_true', help="Output result in JSON format") # Optional JSON output
+    args = parser.parse_args()
+
+    tester = PasswordStrengthTester(args.password)
+    tester.calculateStrength()
+    if args.json:
+        output = {
+            "password": args.password,
+            "score": tester.score,
+            "rating": tester.rating,
+            'entropy bits': tester.entropyBits
+        }
+        print(json.dumps(output, indent=4))
