@@ -8,7 +8,7 @@ ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
 
 # Using a key file for authentication 
 # (with optionally a passphrase because the key might be encrypted)
-key = paramiko.RSAKey.from_private_key_file('/home/kali/.ssh/id_ed25519')
+key = paramiko.RSAKey.from_private_key_file('~/.ssh/id_ed25519')
 ssh.connect(hostname='192.168.56.102', port=22, username='tuser', pkey=key)
 
 if key:
