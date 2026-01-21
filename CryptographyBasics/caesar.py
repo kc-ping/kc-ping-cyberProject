@@ -1,9 +1,11 @@
 import string
+import sys
 from Crypto.Cipher import AES
 from Crypto.Random import get_random_bytes
 from Crypto.Protocol.KDF import PBKDF2
 from Crypto.Util.Padding import pad, unpad
-
+import string
+import os,argparse
 
 def caesar_encrypt(text, shift):
     """Encrypts text using caesar cipher with given shift (0-25). """
@@ -55,11 +57,52 @@ def aes_decrypt(ciphertext, password):
     return plaintext
 
 
-data = b"Secret message"
-password = "my_strong_passphrase"
-cipher_blob = aes_encrypt(data, password)
-print(cipher_blob.hex())  # (binary output; in a real tool you might base64-encode it)
+#parser coomand-line arguments (using argparse for a claer CLI)
+parser = argparse.ArgumentParser(description="Encrypt or decrypt text using Caesar cipher or AES.")
+parser.add_argument('--mode', choices=['encrypt', 'decrypt'], required=True, help="Mode: encrypt or decrypt")
+parser.add_argument('--cipher', choices=['caesar', 'aes'], required=True, help="Cipher: caesar or aes")
+parser.add_argument('--input', required=True, help="Input text (for caesar) or input filename (for aes)")
+parser.add_argument('--output', help="Output filename(optional for (optional))")
+parser.add_argument('--key', required=True, help="Shift (0-25) for caesar or passphrase for aes")
+args = parser.parse_args()
 
-# Later, to decrypt:
-decrypted = aes_decrypt(cipher_blob, password)
-print(decrypted)  # b"Secret message"
+if os.path.isfile(args.input):
+    with open(args.input, 'rb') as f:
+        inputData = f.read()
+else:
+    inputData = args.input.encode('utf-8')
+
+if args.cipher == 'caesar':
+    # for caesar, interpret key as interger shift
+    shift = int(args.key) % 26
+    text= inputData.decode('utf-8')
+    if args.mode == 'encrypt':
+        result = caesar_encrypt(text, shift)
+    else:
+        result = caesar_decrypt(text, shift)
+    resultData =result.encode('utf-8')
+
+elif args.cipher == 'aes':
+    passphrase = args.key.encode('utf-8')
+    if args.mode == 'encrypt':
+        resultData = aes_encrypt(inputData, passphrase)
+    else:
+        try:
+            resultData = aes_decrypt(inputData, passphrase)
+        except (ValueError, KeyError):
+            # common cause: wrong passphrase or corrupted input
+            print("ERROR: Decryption failed — wrong key/passphrase or corrupted input.", file=sys.stderr)
+            sys.exit(2)
+
+if args.output:
+    with open(args.output, 'wb') as f:
+        f.write(resultData)
+
+else:
+    #if output file notgiven , print text for caesar of hex for aes
+    if args.cipher == 'caesar':
+        print(resultData.decode('utf-8'))
+    else:
+        #base64 encode for readable output
+        import base64
+        print(base64.b64encode(resultData).decode('utf-8'))
