@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="card">
+    <h2>Welcome {{ user }}</h2>
+    <p>You are authenticated securely.</p>
+
+    <form action="/upload" method="POST" enctype="multipart/form-data" class="upload-form">
+        <input type="file" name="file" required>
+        <button type="submit" class="btn">Upload File</button>
+    </form>
+
+    <a href="/logout" class="btn-outline">Logout</a>
+</div>
+{% endblock %}
